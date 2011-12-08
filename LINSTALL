@@ -1,0 +1,24 @@
+INSTALL GO-IUP
+
+1. DOWNLOAD GO-IUP
+git clone https://github.com/visualfc/go-iup.git
+
+2. DOWNLOAD IUP CD IM
+All the libraries were build using Tecmake. Please use it if you intend to recompile the sources. Tecmake can be found at http://www.tecgraf.puc-rio.br/tecmake.
+
+The IM files can be downloaded at http://sourceforge.net/projects/imtoolkit/files/.
+The CD files can be downloaded at http://sourceforge.net/projects/canvasdraw/files/.
+The IUP files can be downloaded at http://sourceforge.net/projects/iup/files/.
+The Lua files can be downloaded at http://sourceforge.net/projects/luabinaries/files/.
+
+3. SETUP GO-IUP libs
+copy iup include -> go-iup/libs/iup/include
+copy iup lib -> go-iup/libs/iup
+copy cd include -> go-iup/libs/cd/include
+copy cd lib -> go-iup/libs/cd
+
+4. INSTALL GO-IUP
+cd go-iup/src
+make
+
+(end of INSTALL)
