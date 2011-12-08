@@ -1,0 +1,5 @@
+*.8
+*.6
+*.o
+libs
+examples/bin
