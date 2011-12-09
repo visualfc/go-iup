@@ -4,7 +4,7 @@ TARG=vfc/iupimglib
 CGOFILES=\
 	iupimglib.go \
 
-CGO_CFLAGS = -I../..libs/iup/include
+CGO_CFLAGS = -I../../libs/iup/include
 CGO_LDFLAGS+= -L../../libs/iup -liup -liupimglib
 
 #CLEANFILES+=

@@ -16,3 +16,7 @@ _go_win_.$O: _go_.$O _go_win_rc.$O
 endif
 
 endif
+
+ifeq ($(GOOS),linux)
+LD:=$(LD) -r.
+endif
