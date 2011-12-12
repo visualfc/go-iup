@@ -403,3 +403,19 @@ func (h *Handle) SetCallbackProc(name string, proc uintptr) {
 	defer FreeCS(cname)
 	C.IupSetCallback(h.CHandle(), cname, (C.Icallback)(unsafe.Pointer(proc)))
 }
+
+func GetAttribute(h IHandle, name string) string {
+	return h.GetHandle().GetAttribute(name)
+}
+
+func GetAttributeData(h IHandle, name string) uintptr {
+	return h.GetHandle().GetAttributeData(name)
+}
+
+func SetAttribute(h IHandle, name string, value string) {
+	h.GetHandle().SetAttribute(name, value)
+}
+
+func SetAttributeData(h IHandle, name string, value uintptr) {
+	h.GetHandle().SetAttributeData(name, value)
+}

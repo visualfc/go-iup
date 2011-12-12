@@ -27,6 +27,7 @@ func main() {
 }
 
 func ui() {
+	var img *iup.Handle
 	tree := iup.Tree(
 		"EXPANDALL=YES",
 	)
@@ -125,9 +126,13 @@ func ui() {
 					file, ok := iup.GetOpenFile("", "*.png;*.jpg;*.bmp;*.jpeg")
 					if ok {
 						label := arg.Sender.GetDialogChild("img_label")
-						img := iupim.LoadImage(file)
+						if img != nil {
+							img.Destroy()
+						}
+						img = iupim.LoadImage(file)
 						if img != nil {
 							img.SetName("img_label_image")
+							label.SetAttribute("IMAGE", "img_label_image")
 							label.Refresh()
 						}
 					}
@@ -154,7 +159,6 @@ func ui() {
 	)
 	dlg.Show()
 
-	tree.SetAttribute("NAME", "Root")
 	tree.SetAttribute("ADDBRANCH", "Item2")
 	tree.SetAttribute("ADDLEAF1", "leaf3")
 	tree.SetAttribute("ADDLEAF2", "leaf4")
