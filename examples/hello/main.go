@@ -1,9 +1,12 @@
-// hello project main.go
+// Copyright (C) 2011-2012 visualfc. All rights reserved.
+// Use of this source code is governed by a MIT license 
+// that can be found in the COPYRIGHT file.
+
 package main
 
 import (
 	"fmt"
-	"vfc/iup"
+	"github.com/visualfc/go-iup/iup"
 )
 
 func main() {
@@ -13,7 +16,7 @@ func main() {
 		return
 	}
 	defer iup.Close()
-	fmt.Println("Hello World!")
+	fmt.Println("Hello go-iup!")
 	mainui()
 }
 
@@ -47,7 +50,7 @@ func mainui() {
 					"TITLE=About",
 					"SIZE=50x",
 					func(arg *iup.ButtonAction) {
-						iup.Message("About","GO-IUP\nvisualfc@gmail.com 2011")
+						iup.Message("About", "GO-IUP\nvisualfc@gmail.com 2011-2012")
 					},
 				),
 			),

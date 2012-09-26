@@ -1,7 +1,7 @@
 INSTALL GO-IUP
 
 1. DOWNLOAD GO-IUP
-git clone https://github.com/visualfc/go-iup.git
+go get github.com/visualfc/go-iup
 
 2. DOWNLOAD  IUP CD IM
 All the libraries were build using Tecmake. Please use it if you intend to recompile the sources. Tecmake can be found at http://www.tecgraf.puc-rio.br/tecmake.
@@ -12,19 +12,35 @@ The IUP files can be downloaded at http://sourceforge.net/projects/iup/files/.
 The Lua files can be downloaded at http://sourceforge.net/projects/luabinaries/files/.
 
 3. SETUP GO-IUP libs
-windows:
-copy iup include -> go-iup/libs/iup/include
-copy iup lib -> go-iup/libs/iup
-linux:
-copy iup include -> go-iup/libs/iup/include
-copy iup lib -> go-iup/libs/iup
-copy cd include -> go-iup/libs/cd/include
-copy cd lib -> go-iup/libs/cd
-copy im include -> go-iup/libs/im/include
-copy im lib -> go-iup/libs/im
 
+Windows: 
+github.com/
+	visualfc/
+		go-iup/ -- go-iup
+		libs/
+			iup/ -- iup libs
+				include/
+Linux:
+github.com/
+	visualfc/
+		go-iup/ -- go-iup
+		libs/
+			iup/ -- iup libs
+				include/
+			cd/ -- cd libs
+				include/
+			im/ -- im libs
+				include/
+				
 4. INSTALL GO-IUP
-cd go-iup/src
-make
+go install github.com/visualfc/go-iup/iup
+go install github.com/visualfc/go-iup/iupctls
+go install github.com/visualfc/go-iup/iupim
+go install github.com/visualfc/go-iup/iupimglib
+go install github.com/visualfc/go-iup/iupole
+go install github.com/visualfc/go-iup/iuppplot
+go install github.com/visualfc/go-iup/iuptuio
+go install github.com/visualfc/go-iup/iupweb
+
 
 (end of INSTALL)

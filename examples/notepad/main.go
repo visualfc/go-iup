@@ -1,11 +1,16 @@
+// Copyright (C) 2011-2012 visualfc. All rights reserved.
+// Use of this source code is governed by a MIT license 
+// that can be found in the COPYRIGHT file.
+
 package main
 
 import (
 	"fmt"
-	"time"
-	"sync"
+	"github.com/visualfc/go-iup/iup"
 	"io/ioutil"
-	"vfc/iup"
+	"runtime"
+	"sync"
+	"time"
 )
 
 type Notepad struct {
@@ -49,6 +54,7 @@ func (pad *Notepad) init() *Notepad {
 					iup.Attr("TITLE", "Open\tCtrl+O"),
 					iup.Attr("TIP", "Open File"),
 					func(arg *iup.ItemAction) {
+						runtime.GC()
 						pad.Open()
 					},
 					func(arg *iup.ItemHighlight) {
@@ -95,7 +101,7 @@ func (pad *Notepad) init() *Notepad {
 					iup.Attr("TITLE", "About"),
 					iup.Attr("TIP", "About Notepad"),
 					func(arg *iup.ItemAction) {
-						iup.Message("About","\tNotepad 1.0\n\n\tvisualfc@gmail.com 2011\t")
+						iup.Message("About", "\tNotepad 1.0\n\n\tvisualfc@gmail.com 2012\t")
 					},
 					func(arg *iup.ItemHighlight) {
 						pad.ShowStatus(arg.Sender)
@@ -241,18 +247,18 @@ func (pad *Notepad) SetFileName(fileName string) {
 	pad.modify = false
 	pad.fileName = fileName
 	if fileName == "" {
-		pad.dlg.SetAttribute("TITLE", "noname - Notepad")
+		pad.dlg.SetAttribute("TITLE", "[noname] - Notepad")
 	} else {
-		pad.dlg.SetAttribute("TITLE", fileName+" - Notepad")
+		pad.dlg.SetAttribute("TITLE", "["+fileName+"] - Notepad")
 	}
 }
 
 func (pad *Notepad) SetModify() {
 	pad.modify = true
 	if pad.fileName == "" {
-		pad.dlg.SetAttribute("TITLE", "noname* - Notepad")
+		pad.dlg.SetAttribute("TITLE", "[noname*] - Notepad")
 	} else {
-		pad.dlg.SetAttribute("TITLE", pad.fileName+"* - Notepad")
+		pad.dlg.SetAttribute("TITLE", "["+pad.fileName+"*] - Notepad")
 	}
 }
 

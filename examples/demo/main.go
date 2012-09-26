@@ -1,13 +1,16 @@
-// demo project main.go
+// Copyright (C) 2011-2012 visualfc. All rights reserved.
+// Use of this source code is governed by a MIT license 
+// that can be found in the COPYRIGHT file.
+
 package main
 
 import (
 	"fmt"
-	"vfc/iup"
-	"vfc/iupctls"
-	"vfc/iuppplot"
-	"vfc/iupimglib"
-	"vfc/iupim"
+	"github.com/visualfc/go-iup/iup"
+	"github.com/visualfc/go-iup/iupctls"
+	"github.com/visualfc/go-iup/iupim"
+	"github.com/visualfc/go-iup/iupimglib"
+	"github.com/visualfc/go-iup/iuppplot"
 )
 
 func main() {
@@ -22,7 +25,6 @@ func main() {
 	iuppplot.Open()
 	iupimglib.Open()
 
-	fmt.Println("Hello World!")
 	ui()
 }
 
@@ -46,7 +48,7 @@ func ui() {
 				iup.Text("VALUE=100"),
 			),
 			iup.Toggle("TITLE=Toggle,EXPAND=VERTICAL"),
-			iup.Val(),
+			//			iup.Val("MIN=1,MAX=100"),
 		),
 		iup.Frame(
 			iup.Radio(
@@ -73,6 +75,7 @@ func ui() {
 			"NUM_PARTS=2",
 			"SHOW_SECONDARY=YES",
 			func(arg *iup.ColorbarSelect) {
+				fmt.Println(arg)
 			},
 		),
 	)
@@ -80,6 +83,9 @@ func ui() {
 		"TABTITLE=ColorBrowser",
 		iup.ColorBrowser(
 			"EXPAND=YES",
+			func(arg *iup.ColorBrowserDrag) {
+				fmt.Printf("R=%d,G=%d,B=%d\n", arg.R, arg.G, arg.B)
+			},
 		),
 	)
 	vbox5 := iup.Vbox(
@@ -132,8 +138,8 @@ func ui() {
 						img = iupim.LoadImage(file)
 						if img != nil {
 							img.SetName("img_label_image")
-							label.SetAttribute("IMAGE", "img_label_image")
-							label.Refresh()
+							label.(*iup.Handle).SetAttribute("IMAGE", "img_label_image")
+							label.(*iup.Handle).Refresh()
 						}
 					}
 				},
@@ -142,7 +148,7 @@ func ui() {
 		iup.Label("IMAGE=img_label_image", "NAME=img_label"),
 	)
 	dlg := iup.Dialog(
-		iup.Attr("TITLE", "GO-IUP Demo - visualfc 2011"),
+		iup.Attr("TITLE", "GO-IUP Demo 1.0"),
 		"SIZE=350x200",
 		"SHRINK=YES",
 		"MARGIN=10x10",
